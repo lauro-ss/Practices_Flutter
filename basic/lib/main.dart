@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 main() => runApp(App());
 
-class App extends StatelessWidget {
-  App({super.key});
+class AppState extends State<App>{
+
+  int aq = 0;
 
   final quests = [
     "Pergunta 1", 
@@ -17,6 +18,18 @@ class App extends StatelessWidget {
     ["Resposta 1, Resposta 2, Resposta 3"]
   ];
 
+  void nextQuest(){
+    if(aq < quests.length - 1){
+      setState(() {
+        aq++;
+      });
+    }else{
+      setState(() {
+        aq = 0;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,14 +38,27 @@ class App extends StatelessWidget {
           title: const Text("App Title")
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            for(int i = 0; i < quests.length; i++) Text(quests[i]),
-            /* for(int i = 0; i < answers[0].length; i++) ElevatedButton(onPressed: null, child: Text(answers[0][i])), */
-            ElevatedButton(onPressed: ()  => print("Pergunta"), child: Text("Resposta 1")),
-            /* ElevatedButton(onPressed: respond, child: Text("Respsota 2")) */
+            Text(quests[aq]),
+            for(var i in answers[aq])
+              ElevatedButton(
+                onPressed: nextQuest, 
+                child: Text(i),
+              ),
           ],
         ),
       )
     );
   }
+}
+
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  AppState createState() {
+    return AppState();
+  }
+  
 }
