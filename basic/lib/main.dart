@@ -38,7 +38,7 @@ class _AppState extends State<App> {
       appBar: AppBar(title: const Text("App Title")),
       body: Column(children: [
         Quest(_quests[_aq]),
-        for (var v in _answers[_aq]) Response(v, _nextQuest),
+        ..._answers[_aq].map((v) => Response(v, _nextQuest)),
       ]),
     ));
   }
