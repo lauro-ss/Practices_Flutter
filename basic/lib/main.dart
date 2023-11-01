@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
+import './quest.dart';
 
 main() => runApp(const App());
 
-class _AppState extends State<App>{
-
+class _AppState extends State<App> {
   int _aq = 0;
 
-  final quests = [
-    "Pergunta 1", 
-    "Pergunta 2",
-    "Pergunta 3"
-    ];
-  
-  final List<List<String>> answers = [
+  final _quests = [
+    "Qual a sua fruta favorita?",
+    "Qual o seu animal favorito?",
+    "Qual o seu jogo favorito?"
+  ];
+
+  final List<List<String>> _answers = [
     ["Resposta 1, Resposta 2, Resposta 3"],
     ["Resposta 1, Resposta 2, Resposta 3"],
     ["Resposta 1, Resposta 2, Resposta 3"]
   ];
 
-  void nextQuest(){
-    if(_aq < quests.length - 1){
+  void _nextQuest() {
+    if (_aq < _quests.length - 1) {
       setState(() {
         _aq++;
       });
-    }else{
+    } else {
       setState(() {
         _aq = 0;
       });
@@ -33,23 +33,22 @@ class _AppState extends State<App>{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("App Title")
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        home: Scaffold(
+      appBar: AppBar(title: const Text("App Title")),
+      body: SizedBox(
+        width: double.maxFinite,
+        child: Column(
           children: [
-            Text(quests[_aq]),
-            for(var i in answers[_aq])
+            Quest(_quests[_aq]),
+            for (var i in _answers[_aq])
               ElevatedButton(
-                onPressed: nextQuest, 
+                onPressed: _nextQuest,
                 child: Text(i),
               ),
           ],
         ),
-      )
-    );
+      ),
+    ));
   }
 }
 
@@ -60,5 +59,4 @@ class App extends StatefulWidget {
   createState() {
     return _AppState();
   }
-  
 }
