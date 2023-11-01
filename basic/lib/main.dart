@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './quest.dart';
+import './response.dart';
 
 main() => runApp(const App());
 
@@ -9,13 +10,13 @@ class _AppState extends State<App> {
   final _quests = [
     "Qual a sua fruta favorita?",
     "Qual o seu animal favorito?",
-    "Qual o seu jogo favorito?"
+    "Qual o seu planeta favorito?"
   ];
 
   final List<List<String>> _answers = [
-    ["Resposta 1, Resposta 2, Resposta 3"],
-    ["Resposta 1, Resposta 2, Resposta 3"],
-    ["Resposta 1, Resposta 2, Resposta 3"]
+    ["Maçã", "Laranja", "Melancia"],
+    ["Gato", "Cachorro", "Cavalo"],
+    ["Marte", "Saturno", "Vênus"]
   ];
 
   void _nextQuest() {
@@ -35,19 +36,10 @@ class _AppState extends State<App> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(title: const Text("App Title")),
-      body: SizedBox(
-        width: double.maxFinite,
-        child: Column(
-          children: [
-            Quest(_quests[_aq]),
-            for (var i in _answers[_aq])
-              ElevatedButton(
-                onPressed: _nextQuest,
-                child: Text(i),
-              ),
-          ],
-        ),
-      ),
+      body: Column(children: [
+        Quest(_quests[_aq]),
+        for (var v in _answers[_aq]) Response(v, _nextQuest),
+      ]),
     ));
   }
 }

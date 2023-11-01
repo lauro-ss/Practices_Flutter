@@ -7,10 +7,14 @@ class Quest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _text,
-      style: const TextStyle(fontSize: 28),
-      textAlign: TextAlign.center,
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.all(10),
+      child: Text(
+        _text,
+        style: const TextStyle(fontSize: 28),
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
