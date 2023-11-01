@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-main() => runApp(App());
+main() => runApp(const App());
 
-class AppState extends State<App>{
+class _AppState extends State<App>{
 
-  int aq = 0;
+  int _aq = 0;
 
   final quests = [
     "Pergunta 1", 
@@ -19,13 +19,13 @@ class AppState extends State<App>{
   ];
 
   void nextQuest(){
-    if(aq < quests.length - 1){
+    if(_aq < quests.length - 1){
       setState(() {
-        aq++;
+        _aq++;
       });
     }else{
       setState(() {
-        aq = 0;
+        _aq = 0;
       });
     }
   }
@@ -40,8 +40,8 @@ class AppState extends State<App>{
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(quests[aq]),
-            for(var i in answers[aq])
+            Text(quests[_aq]),
+            for(var i in answers[_aq])
               ElevatedButton(
                 onPressed: nextQuest, 
                 child: Text(i),
@@ -57,8 +57,8 @@ class App extends StatefulWidget {
   const App({super.key});
 
   @override
-  AppState createState() {
-    return AppState();
+  createState() {
+    return _AppState();
   }
   
 }
