@@ -8,6 +8,12 @@ class Response extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: _response, child: Text(_text));
+    return SizedBox(
+      width: double.maxFinite,
+      child: ElevatedButton(
+        onPressed: _response,
+        child: Text(_text),
+      ),
+    );
   }
 }
