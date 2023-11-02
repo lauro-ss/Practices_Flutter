@@ -19,16 +19,16 @@ class _AppState extends State<App> {
     ["Marte", "Saturno", "Vênus"]
   ];
 
+  void _reset() {
+    setState(() {
+      _aq = 0;
+    });
+  }
+
   void _nextQuest() {
-    if (_aq < _quests.length - 1) {
-      setState(() {
-        _aq++;
-      });
-    } else {
-      setState(() {
-        _aq = 0;
-      });
-    }
+    setState(() {
+      _aq++;
+    });
   }
 
   @override
@@ -36,10 +36,23 @@ class _AppState extends State<App> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(title: const Text("App Title")),
-      body: Column(children: [
-        Quest(_quests[_aq]),
-        ..._answers[_aq].map((v) => Response(v, _nextQuest)),
-      ]),
+      body: _aq <= _quests.length - 1
+          ? Column(children: [
+              Quest(_quests[_aq]),
+              ..._answers[_aq].map((v) => Response(v, _nextQuest)),
+            ])
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Parabéns!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 28)),
+                SizedBox(
+                    width: double.maxFinite,
+                    child: ElevatedButton(
+                        onPressed: _reset, child: const Text("Refazer")))
+              ],
+            ),
     ));
   }
 }
