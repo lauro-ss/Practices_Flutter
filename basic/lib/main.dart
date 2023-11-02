@@ -7,13 +7,13 @@ main() => runApp(const App());
 class _AppState extends State<App> {
   int _aq = 0;
 
-  final _quests = [
+  final _quests = const [
     "Qual a sua fruta favorita?",
     "Qual o seu animal favorito?",
     "Qual o seu planeta favorito?"
   ];
 
-  final List<List<String>> _answers = [
+  final List<List<String>> _answers = const [
     ["Maçã", "Laranja", "Melancia"],
     ["Gato", "Cachorro", "Cavalo"],
     ["Marte", "Saturno", "Vênus"]
