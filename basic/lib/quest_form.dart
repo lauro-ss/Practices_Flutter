@@ -21,6 +21,7 @@ class QuestFormState extends State<QuestForm> {
                 if (value == null || value == "") {
                   return "input inválido";
                 }
+                return null;
               },
             ),
             ElevatedButton(
@@ -32,6 +33,8 @@ class QuestFormState extends State<QuestForm> {
 }
 
 class QuestForm extends StatefulWidget {
+  const QuestForm({super.key});
+
   @override
   createState() {
     return QuestFormState();
