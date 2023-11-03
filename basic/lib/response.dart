@@ -13,7 +13,7 @@ class Response extends StatelessWidget {
       child: ElevatedButton(
         onPressed: _response,
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.amber[800], foregroundColor: Colors.black),
+            backgroundColor: Colors.amber, foregroundColor: Colors.black),
         child: Text(_text, style: const TextStyle(fontSize: 20)),
       ),
     );
