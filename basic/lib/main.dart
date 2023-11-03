@@ -1,3 +1,4 @@
+import 'package:basic/quest_form.dart';
 import 'package:basic/quests.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,6 @@ class App extends StatelessWidget {
               ),
               backgroundColor: Colors.amber,
             ),
-            body: Column(children: [const Quests()])));
+            body: const Column(children: [Quests(), QuestForm()])));
   }
 }

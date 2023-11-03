@@ -23,6 +23,7 @@ class _QuestFormState extends State<QuestForm> {
                 }
                 return null;
               },
+              onFieldSubmitted: (value) => _onValidate(formKey),
             ),
             ElevatedButton(
                 onPressed: () => _onValidate(formKey),
