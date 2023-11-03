@@ -15,7 +15,11 @@ class Result extends StatelessWidget {
         SizedBox(
             width: double.maxFinite,
             child: ElevatedButton(
-                onPressed: _onReset, child: const Text("Refazer")))
+              onPressed: _onReset,
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber, foregroundColor: Colors.black),
+              child: const Text("Refazer", style: TextStyle(fontSize: 20)),
+            ))
       ],
     );
   }
