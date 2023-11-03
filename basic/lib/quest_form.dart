@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class QuestFormState extends State<QuestForm> {
-  final _formKey = GlobalKey<FormState>();
+class _QuestFormState extends State<QuestForm> {
+  final formKey = GlobalKey<FormState>();
 
-  void _onValidate(GlobalKey<FormState> _formKey) {
-    if (_formKey.currentState!.validate()) {
+  void _onValidate(GlobalKey<FormState> formKey) {
+    if (formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Sucesso")));
     }
@@ -13,7 +13,7 @@ class QuestFormState extends State<QuestForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
+        key: formKey,
         child: Column(
           children: [
             TextFormField(
@@ -25,7 +25,7 @@ class QuestFormState extends State<QuestForm> {
               },
             ),
             ElevatedButton(
-                onPressed: () => _onValidate(_formKey),
+                onPressed: () => _onValidate(formKey),
                 child: const Text("Submit"))
           ],
         ));
@@ -37,6 +37,6 @@ class QuestForm extends StatefulWidget {
 
   @override
   createState() {
-    return QuestFormState();
+    return _QuestFormState();
   }
 }

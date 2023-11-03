@@ -17,6 +17,6 @@ class App extends StatelessWidget {
               ),
               backgroundColor: Colors.amber,
             ),
-            body: const Quests()));
+            body: Column(children: [const Quests()])));
   }
 }
