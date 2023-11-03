@@ -40,21 +40,23 @@ class QuestState extends State<Quests> {
   Widget build(BuildContext context) {
     return _aq <= _quests.length - 1
         ? Column(children: [
-            if (_aq > 0)
-              Container(
-                alignment: Alignment.topLeft,
-                margin: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-                child: ElevatedButton(
-                  onPressed: _back,
-                  style: const ButtonStyle(
-                      iconColor: MaterialStatePropertyAll(Colors.black),
-                      shape: MaterialStatePropertyAll(CircleBorder()),
-                      backgroundColor: MaterialStatePropertyAll(Colors.amber),
-                      padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
-                      iconSize: MaterialStatePropertyAll(30)),
-                  child: const Icon(Icons.arrow_back_ios_rounded),
-                ),
-              ),
+            _aq > 0
+                ? Container(
+                    alignment: Alignment.topLeft,
+                    margin: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                    child: ElevatedButton(
+                      onPressed: _back,
+                      style: const ButtonStyle(
+                          iconColor: MaterialStatePropertyAll(Colors.black),
+                          shape: MaterialStatePropertyAll(CircleBorder()),
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.amber),
+                          padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
+                          iconSize: MaterialStatePropertyAll(30)),
+                      child: const Icon(Icons.arrow_back_ios_rounded),
+                    ),
+                  )
+                : const SizedBox(height: 70),
             Quest(_quests[_aq]),
             ..._answers[_aq].map((v) => Response(v, _nextQuest)),
           ])

@@ -9,7 +9,7 @@ class Quest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
       child: Text(
         _text,
         style: const TextStyle(fontSize: 28),
