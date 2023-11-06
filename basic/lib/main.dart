@@ -33,7 +33,7 @@ class AppState extends State<App> {
                             });
                           },
                           child: const Padding(
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.fromLTRB(27, 20, 27, 20),
                             child: Column(
                               children: [
                                 Icon(
@@ -42,7 +42,9 @@ class AppState extends State<App> {
                                 ),
                                 SizedBox(height: 20),
                                 Text(
-                                  "Quests",
+                                  "Quest\nList",
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 28),
                                 )
                               ],
@@ -56,11 +58,23 @@ class AppState extends State<App> {
                               wg = const QuestForm();
                             });
                           },
-                          child: const Column(
-                            children: [
-                              Icon(Icons.format_list_bulleted),
-                              Text("Quests")
-                            ],
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(27, 20, 27, 20),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.format_list_bulleted_add,
+                                  size: 50,
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  "Add\nQuest",
+                                  softWrap: true,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 28),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
