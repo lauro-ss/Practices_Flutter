@@ -2,6 +2,7 @@ import 'package:basic/quest_builder.dart';
 import 'package:basic/quest_form.dart';
 import 'package:basic/quests.dart';
 import 'package:flutter/material.dart';
+import './nav.dart';
 
 main() => runApp(const App());
 
@@ -12,7 +13,9 @@ class AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+            drawer: const Nav(),
             appBar: AppBar(
+              iconTheme: const IconThemeData(color: Colors.black),
               title: const Text(
                 "App Title",
                 style: TextStyle(color: Colors.black),
