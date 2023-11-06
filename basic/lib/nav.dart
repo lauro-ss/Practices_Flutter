@@ -1,7 +1,11 @@
+import 'package:basic/quest_form.dart';
+import 'package:basic/quests.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatelessWidget {
-  const Nav({super.key});
+  const Nav(this._gotoQuestForm, {super.key});
+
+  final void Function(Widget? g) _gotoQuestForm;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +18,26 @@ class Nav extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.abc),
-            title: const Text("Test"),
+            title: const Text("Home"),
             onTap: () {
               Navigator.of(context).pop();
+              _gotoQuestForm(null);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.abc),
+            title: const Text("Quests"),
+            onTap: () {
+              Navigator.of(context).pop();
+              _gotoQuestForm(const Quests());
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.abc),
+            title: const Text("Quests"),
+            onTap: () {
+              Navigator.of(context).pop();
+              _gotoQuestForm(const QuestForm());
             },
           )
         ],

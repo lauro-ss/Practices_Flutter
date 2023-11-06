@@ -9,11 +9,19 @@ main() => runApp(const App());
 class AppState extends State<App> {
   Widget? wg;
 
+  void _goto(Widget? g) {
+    setState(() {
+      wg = g;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            drawer: const Nav(),
+            drawer: Nav(
+              _goto,
+            ),
             appBar: AppBar(
               iconTheme: const IconThemeData(color: Colors.black),
               title: const Text(
