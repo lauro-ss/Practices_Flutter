@@ -5,6 +5,7 @@ import './response.dart';
 
 class QuestState extends State<Quests> {
   int _aq = 0;
+  int _points = 0;
 
   final _quests = const [
     "Qual a sua fruta favorita?",
@@ -21,6 +22,7 @@ class QuestState extends State<Quests> {
   void _reset() {
     setState(() {
       _aq = 0;
+      _points = 0;
     });
   }
 
@@ -30,9 +32,10 @@ class QuestState extends State<Quests> {
     });
   }
 
-  void _nextQuest() {
+  void _respose(int v) {
     setState(() {
       _aq++;
+      _points += v;
     });
   }
 
@@ -58,9 +61,9 @@ class QuestState extends State<Quests> {
                   )
                 : const SizedBox(height: 70),
             Quest(_quests[_aq]),
-            ..._answers[_aq].map((v) => Response(v, _nextQuest)),
+            ..._answers[_aq].map((v) => Response(v, _respose)),
           ])
-        : Result(_reset);
+        : Result(_reset, _points);
   }
 }
 
