@@ -5,6 +5,7 @@ import './response.dart';
 
 class QuestState extends State<Quests> {
   int _aq = 0;
+  int _prev = 0;
   int _points = 0;
 
   final _quests = const [
@@ -29,12 +30,14 @@ class QuestState extends State<Quests> {
   void _back() {
     setState(() {
       _aq--;
+      _points -= _prev;
     });
   }
 
   void _respose(int v) {
     setState(() {
       _aq++;
+      _prev = v;
       _points += v;
     });
   }
