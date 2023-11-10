@@ -19,10 +19,11 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Expenses")),
       body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
-              width: double.maxFinite,
-              child: Card(color: Colors.cyan, child: Text("Gráfico"))),
+          Card(color: Colors.cyan, child: Text("Gráfico")),
+          Card(color: Colors.cyan, child: Text("Texto")),
         ],
       ),
     );
