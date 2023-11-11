@@ -8,7 +8,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Home());
+    return MaterialApp(
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          fontFamily: "OpenSans",
+        ),
+        home: Home());
   }
 }
 
@@ -30,13 +35,26 @@ class Home extends StatelessWidget {
         children: [
           const Card(color: Colors.cyan, child: Text("Gráfico")),
           Card(
-            color: Colors.cyan,
             child: Column(
               children: [
                 ..._tran.map((t) {
                   return Row(
                     children: [
-                      Text(t.value.toString()),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColor,
+                                width: 2)),
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          t.value.toString(),
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
                       Column(
                         children: [Text(t.title), Text(t.date.toString())],
                       )
