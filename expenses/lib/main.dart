@@ -1,5 +1,6 @@
 import 'package:expenses/models/tran.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert' show utf8;
 
 main() => runApp(const App());
 
@@ -21,9 +22,11 @@ class Home extends StatelessWidget {
   Home({super.key});
 
   final _tran = [
-    Transaction(id: 1, title: "Gas", value: 99.99, date: DateTime.now()),
-    Transaction(id: 2, title: "Internet", value: 65.00, date: DateTime.now()),
+    Transaction(1, "Gas", 99.99, DateTime.now(), "BRL"),
+    Transaction(2, "Internet", 65.00, DateTime.now(), "BRL"),
   ];
+
+  final utf = utf8.decoder;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,13 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Card(color: Colors.cyan, child: Text("Gráfico")),
+          const Card(
+            color: Colors.cyan,
+            child: Text(
+              "\u{1F602}",
+              style: TextStyle(fontSize: 40),
+            ),
+          ),
           Card(
             child: Column(
               children: [
@@ -49,14 +58,26 @@ class Home extends StatelessWidget {
                                 width: 2)),
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          t.value.toString(),
+                          t.value,
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
                       Column(
-                        children: [Text(t.title), Text(t.date.toString())],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            t.title,
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            t.date,
+                            style: TextStyle(color: Colors.grey[700]),
+                          )
+                        ],
                       )
                     ],
                   );

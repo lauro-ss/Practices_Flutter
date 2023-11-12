@@ -1,12 +1,26 @@
 class Transaction {
-  final int id;
-  final String title;
-  final double value;
-  final DateTime date;
+  final int _id;
+  final String _title;
+  final double _value;
+  final DateTime _date;
+  final String _type;
 
-  Transaction(
-      {required this.id,
-      required this.title,
-      required this.value,
-      required this.date});
+  Transaction(this._id, this._title, this._value, this._date, this._type);
+
+  String get value {
+    switch (_type) {
+      case "BRL":
+        return "R\$ ${_value.toString()}";
+      default:
+        return "\$ ${_value.toString()}";
+    }
+  }
+
+  String get title {
+    return _title;
+  }
+
+  String get date {
+    return _date.toString();
+  }
 }
