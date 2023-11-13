@@ -10,7 +10,7 @@ class Transaction {
   String get value {
     switch (_type) {
       case "BRL":
-        return "R\$ ${_value.toString()}";
+        return "R\$ ${_value.toStringAsFixed(2)}";
       default:
         return "\$ ${_value.toString()}";
     }
