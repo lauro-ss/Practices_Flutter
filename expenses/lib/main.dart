@@ -32,7 +32,6 @@ class Home extends StatelessWidget {
       appBar: AppBar(title: const Text("Expenses")),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const Card(
             color: Colors.cyan,
@@ -80,6 +79,20 @@ class Home extends StatelessWidget {
                     ],
                   );
                 })
+              ],
+            ),
+          ),
+          Card(
+            child: Column(
+              children: [
+                TextField(),
+                TextField(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(onPressed: () => {}, child: Text("Save")),
+                  ],
+                )
               ],
             ),
           ),
