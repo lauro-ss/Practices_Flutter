@@ -12,7 +12,7 @@ class Transaction {
       case "BRL":
         return "R\$ ${_value.toStringAsFixed(2)}";
       default:
-        return "\$ ${_value.toString()}";
+        return "\$ ${_value.toStringAsFixed(2)}";
     }
   }
 
@@ -21,6 +21,19 @@ class Transaction {
   }
 
   String get date {
-    return _date.toString();
+    switch (_type) {
+      case "BRL":
+        return _date.isSameDate(DateTime.now())
+            ? "${_date.hour}:${_date.minute}"
+            : "${_date.day}/${_date.month}/${_date.year}";
+      default:
+        return "\$ ${_value.toString()}";
+    }
+  }
+}
+
+extension _DateCompare on DateTime {
+  bool isSameDate(DateTime other) {
+    return year == other.year && month == other.month && day == other.day;
   }
 }

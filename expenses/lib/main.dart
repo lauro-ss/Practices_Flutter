@@ -1,6 +1,5 @@
 import 'package:expenses/models/tran.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert' show utf8;
 
 main() => runApp(const App());
 
@@ -23,10 +22,9 @@ class Home extends StatelessWidget {
 
   final _tran = [
     Transaction(1, "Gas", 99.99, DateTime.now(), "BRL"),
-    Transaction(2, "Internet", 65.00, DateTime.now(), "BRL"),
+    Transaction(2, "Internet", 65.00,
+        DateTime.now().subtract(const Duration(days: 1)), "BRL"),
   ];
-
-  final utf = utf8.decoder;
 
   @override
   Widget build(BuildContext context) {
