@@ -20,6 +20,9 @@ class App extends StatelessWidget {
 class Home extends StatelessWidget {
   Home({super.key});
 
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+
   final _tran = [
     Transaction(1, "Gas", 99.99, DateTime.now(), "BRL"),
     Transaction(2, "Internet", 65.00,
@@ -83,17 +86,28 @@ class Home extends StatelessWidget {
             ),
           ),
           Card(
-            child: Column(
-              children: [
-                TextField(),
-                TextField(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ElevatedButton(onPressed: () => {}, child: Text("Save")),
-                  ],
-                )
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: titleController,
+                    decoration: InputDecoration(labelText: "Title"),
+                  ),
+                  TextField(
+                    controller: valueController,
+                    decoration: InputDecoration(labelText: "Value"),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () => {titleController.value},
+                          child: Text("Save")),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],
